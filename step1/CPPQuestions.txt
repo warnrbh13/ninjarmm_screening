@@ -1,4 +1,22 @@
 1. Explain the different types of containers available in the standard library, what are their differences? Explain use cases for each.
+/*
+	There are 3 classes of containers since C++11 
+		* Sequence containers
+			Implement data structures which can be accessed sequentially.
+			- e.g. a vector and an array store the data contiguously and can be accessed sequentially
+			- e.g. deque, forward_list and list event when then can be accessed sequentially their elements
+			  are not allocated contiguously, as it is obvious for forward_list that its a single linked list
+			  or the list that is an implementation of a double linked list. deque's elements are not considered
+			  to be allocated contiguously due to it's implementation
+			
+		* Associative containers
+			Implement sorted data structures that can be quickly searched (O(log N) time complexiy) 
+
+		* Unordered associative containers (since C++11)
+			
+		
+*/
+
 2. What are some sorting algorithms, list at least 3? What are their differences and give use cases for each.
 3. What is the purpose of virtual destructors? What types of issues can arise if not used correctly. 
 4. Explain the keyword: static. What does it mean in each context?
