@@ -11,13 +11,35 @@
 			
 		* Associative containers
 			Implement sorted data structures that can be quickly searched (O(log N) time complexiy) 
+			- e.g. set is a collection of unique keys, sorted by keys
+			- e.g. map is a collection of key-value pairs, sorted by keys, keys are unique
 
 		* Unordered associative containers (since C++11)
-			
-		
+			Unordered associative containers implement unsorted (hashed) data structures that can be quickly searched (O(1)
+			amortized, O(N) worst-case complexity)
+			- e.g. unordered_set is a collection of unique keys, hashed by keys
+			- e.g. unordered_map is a collection of key-value pairs, hashed by keys, keys are unique
+
+		To explain the use cases for each depends on the application. Vectors for instance, should be the preferred container for
+		managiing a sequence when random access to any element is at a premium and insertions or deletions of elements are only required
+		at the end of sequence. In another hand the performance of the list container is superior when efficient insertions and deletions
+		(in constant time) at any location within the sequence is at a premium. Such operations in the middle of a sequence require element
+		copies and assignments proportional to the number of elements in the sequence (O(N)).
+
+		Associative and unordered associative containers are very similar but the difference is how data is being pushed into the data structure
+		in Associative containers this data is being sorted while being pushed, in case of set elemets are sorted by unique keys and maps elements
+		sorted by keys which are unique aswell however each element is a key-value pair
 */
 
 2. What are some sorting algorithms, list at least 3? What are their differences and give use cases for each.
+/*
+
+	* Merge Sort
+	* Quick Sort
+	* Seleciton Sort
+
+*/
+
 3. What is the purpose of virtual destructors? What types of issues can arise if not used correctly. 
 4. Explain the keyword: static. What does it mean in each context?
 5. When are static member variables initialized? 
