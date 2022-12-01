@@ -42,6 +42,26 @@
 
 3. What is the purpose of virtual destructors? What types of issues can arise if not used correctly. 
 4. Explain the keyword: static. What does it mean in each context?
+
+	General Definition:
+		Static is a modifier that has two principal effects in functions and variables:
+		* It affects the scope of the variable or function, it means
+		  this function will not be visible outside the block where it's
+		  declared
+		* It affects the lifetime of the variable. This means the variable will exists
+		  from the begining to the end of the program
+
+	Static and Classes
+		* In the context of a class, if a class contains a data member declarared as static, only one 
+		  copy of the data is maintained for all objects of the class.
+		  Static data members can be referred without reffering to an object of class type.
+ 	   * Static data members are not part of objects of a given class type. As result, the declaration
+		  of a static data member is not considered a definition. In this particular case the static members
+		  are declared in class scope but definition is performed at file scope. These static members
+		  have external linkage.
+	
+
+
 5. When are static member variables initialized? 
 6. What is the difference between R-Values and L-Values?
 7. Is this code safe? If so why? If not why?
