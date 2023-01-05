@@ -33,14 +33,78 @@
 
 2. What are some sorting algorithms, list at least 3? What are their differences and give use cases for each.
 /*
+	
+	* Insertion Sort
+		This it's very similar than two well known sorting algorithms: Bubble Sort and Selection Sort.
+		Insertion Sort steps:
+		1. Remove value at index 1 (second item on the array) and store it ina temporary variable. This will leave a gap
+		   at that index, insubsequent pass-throughs, values are removed at the subsequent indexes
+		2. Then each value to the left of the gap is compared with the value temporary stored, if it is bigger then it fills
+		   the gap and the temporary value is stored in this "left value" memory space.
+		3. Continue till the end and start each loop in the subsequent index from the previous iteration
 
-	* Merge Sort
+		Time complexity is O(n^2)
+
+	* MergeSort
+		It is a divide and conquer algorithm, the main idea is to break the problem in smaller subproblems
+		recursively, and finally combine the solutions to the subproblems into one for the original problem.
+		It breaks the input array in half, each halves are each sorted recursively, alfter these two halves
+		are sorted, they are combined into the final solution. The base case to return form the recursive calls
+		is when the input array is 0 or 1 elements long and it is returned directly, then the "merge" algorithm
+		makes completes the sorting in that stack recursive context.
+
+		It's time complexity is O(nlogn) in average.
+
 	* Quick Sort
-	* Seleciton Sort
+		This algorithm consists in the following steps:
+		1. Choose a pivot element
+		2. Rearrange the input array around the pivot
+			Given the pivot element p, the next task is to arrange the elements of the array so that everything
+			before p in the array is less than p, and everything after p is greater than p. After this step, 
+			the pivot element ends indeed, in it's correct final position.
+		3. Repeat steps 1 and 2 for the subarray before the pivot and the subarray after the pivot
 
+	* Differences and use cases
+		-	MergeSort and Quick sort
+			This two sorting algorithms must be considered when you have a huge data collection to sort.
+
+			MergeSort and Quick Sort are similar in average case since both are O(nlogn). An important difference is that
+			to sort the data Quick Sort uses less memory since it's an inplace algorithm (such as insertion sort), 
+			MergeSort uses additional memory to merge halves into final answer.
+
+			Quick Sort disadvantage is that it's worst case is O(n^2). This worst case scenario depends on how the pivot
+			is chosen, considering early versions of chosen it (leftmost or rightmost) the worst cases are:
+				1 Array is already sorted in the same order
+				2 Arrays is already sorted in reverse order
+				3 All alements are the same
+
+			This pivot selection problem was solved by choosing either a random index for the pivot, the middle index, the 
+			meddian of the first, middle and last element of the partititon for the pivot. Whit these modifications the worst
+			case of Quicksort has fewer chances to occur, but a worst case can still ocurr if the input array is such that
+			the maximum or the minimum element is always chosen as the pivot
+
+			So which is better? A very short but not simple answer would be to say that "It Depends"
+			If you have a big collection of data it's very important to consider this both and the decision between both will 
+			depend on your system and your data collection
+
+			* MergeSort ensures you a time complexity of O(nlogn) in the best, average and worst scenarios but uses considerably 
+			  more memory so if you are working on a system with limited resources you would probably need to think twice before choosing
+			  this algorithm
+
+			* QuickSort this algorithm is a very elegant algorithm since it is very fast and uses practially no additional memory,
+			  perfect for systems with limited resources, however if it's very likely to fall into the worst cases scenarios
+			  it would be extremely slow for this big-collection-of-data applications since it worst case it's O(n^2)
+
+
+		-	Insertion Sort
+			This seems to be the worst of the three but it's important to know it because for short amounts of data it can be
+			faster than MergeSort and QuickSort, in addition it uses almost none extra memory so it's ideal for limited resources 
+			systems that are handle few data
+	
 */
 
 3. What is the purpose of virtual destructors? What types of issues can arise if not used correctly. 
+
 4. Explain the keyword: static. What does it mean in each context?
 
 	General Definition:
