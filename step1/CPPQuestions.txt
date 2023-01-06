@@ -104,6 +104,77 @@
 */
 
 3. What is the purpose of virtual destructors? What types of issues can arise if not used correctly. 
+	In c++ interfaces are always pure virtual classes. Usually, you add virtual destructors to interfaces. In some rare circumstances,
+	it's possible to leak resources if you fail to mark destructors as virtual. Here is an example:
+
+	struct BaseClass{};
+
+	struct DerivedClass : BaseClass {
+		DerivedClass() {
+			cout << "DerivedClass() invoked" << endl;
+		}
+		~DerivedClass() {
+			cout << "~DerivedClass() invoked" << endl;
+		}
+	}
+
+	int main() {
+		cout << "Constructing DerivedClass x" << endl;
+		BaseClass x{new DerivedClass{}};
+
+		cout << "Deleting x as BaseClass x" << endl;
+		delete x;
+
+		return {};
+	}
+
+	The output in this case would be:
+	------------------------------
+	Constructing DerivedClass x
+	DerivedClass() invoked
+	Deleting x as BaseClass x
+	------------------------------
+
+	Here you see a DerivedClass deriving from BaseClass, this class has a constructor and destructor
+	that print when they are invoked. There is no problem using new operator to invoke and initalize 
+	DerivedClass. But when you delete the pointer, the BaseClass destructor gets invoked, but the 
+	DerivedClass destructor does not, this produces a memory leak. The proper way to write this piece
+	of code would be:
+
+	struct BaseClass{
+		virtual ~BaseClass() = default;
+	};
+
+	struct DerivedClass : BaseClass {
+		DerivedClass() {
+			cout << "DerivedClass() invoked" << endl;
+		}
+		~DerivedClass() {
+			cout << "~DerivedClass() invoked" << endl;
+		}
+	}
+
+
+	int main() {
+		cout << "Constructing DerivedClass x" << endl;
+		BaseClass x{new DerivedClass{}};
+
+		cout << "Deleting x as BaseClass x" << endl;
+		delete x;
+
+		return {};
+	}
+
+	Now the output would be:
+	------------------------------
+	Constructing DerivedClass x
+	DerivedClass() invoked
+	Deleting x as BaseClass x
+	~DerivedClass() invoked
+	------------------------------
+
+	Adding the virtual destructor causes the DerivedClass destructor to get invoked when you 
+	delete the BaseClass pointer which results in the DerivedClass destructor printing the message.
 
 4. Explain the keyword: static. What does it mean in each context?
 
