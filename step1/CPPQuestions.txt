@@ -205,6 +205,15 @@
 	at global scope, not within a containing class definition.
 
 6. What is the difference between R-Values and L-Values?
+	L-Values are object reference and the R-Value is the actual value of that reference 
+	An lvalue is an expression that yields an object reference, such as a variable name, 
+	an array subscript reference, a dereferenced pointer, or a function call that returns 
+	a reference. An lvalue always has a defined region of storage, so you can take its address.
+
+	An rvalue is an expression that is not an lvalue. Examples of rvalues include literals, 
+	the results of most operators, and function calls that return nonreferences. An rvalue does 
+	not necessarily have any storage associated with it.
+
 7. Is this code safe? If so why? If not why?
 	std::string foo()
 	{
