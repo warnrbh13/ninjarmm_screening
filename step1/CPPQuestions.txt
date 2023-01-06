@@ -194,10 +194,16 @@
 		  of a static data member is not considered a definition. In this particular case the static members
 		  are declared in class scope but definition is performed at file scope. These static members
 		  have external linkage.
-	
-
 
 5. When are static member variables initialized? 
+	Static member variables are initialized to their default zero or null if they are pointers before the
+	begining of the program.
+
+	Static members of a class are not associated with a particular instance of the class. Static members
+	have static storage duration, these are similar to static variables and functions declared at global
+	scope but these need to be refered using the scope resolution operator (::). They must be initialized 
+	at global scope, not within a containing class definition.
+
 6. What is the difference between R-Values and L-Values?
 7. Is this code safe? If so why? If not why?
 	std::string foo()
