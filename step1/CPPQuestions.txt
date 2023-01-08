@@ -215,6 +215,8 @@
 	the results of most operators, and function calls that return nonreferences. An rvalue does 
 	not necessarily have any storage associated with it.
 
+	An rvalue is a temporary value that does not persist beyond the expression where is used.
+
 7. Is this code safe? If so why? If not why?
 	std::string foo()
 	{
