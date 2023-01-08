@@ -201,7 +201,8 @@
 
 	Static members of a class are not associated with a particular instance of the class. Static members
 	have static storage duration, these are similar to static variables and functions declared at global
-	scope but these need to be refered using the scope resolution operator (::). They must be initialized 
+	scope (static storage duration and are allocate when the program starts and deallocated when the program stops)
+	but these need to be refered using the scope resolution operator (::). They must be initialized 
 	at global scope, not within a containing class definition.
 
 6. What is the difference between R-Values and L-Values?
