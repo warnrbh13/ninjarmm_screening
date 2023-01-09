@@ -179,6 +179,7 @@
 4. Explain the keyword: static. What does it mean in each context?
 
 	General Definition:
+
 		Static is a modifier that has two principal effects in functions and variables:
 		* It affects the scope of the variable or function, it means
 		  this function will not be visible outside the block where it's
@@ -251,16 +252,64 @@
 	by other threads or main code until this it's unlocked, there are other usefull alternatives like lock_guards which are safer since they
 	unlock the resouces automatically after the data gets out of scope. 
 
-	
+	I would share them the same way.
 
 11. What are the some of the principles of object-oriented programming?
+		Polymorphism -> This allows to change the type of a class or cast it as another type
+		Encapsulation -> This allows to prevent the acces of some member variables or funcitons from a class, structure
+						 or translation unit to be modified or accessed directly
+		Abstraction ->  To show only for the user of the class, structure or translation unit the functions he need to use or 
+						configure an instance of this data without providing any detail an complexity of the construction information
+		Inheritance -> This allows your class to inherit or members, variables, functions
+
 12. Explain inheritance vs composition vs aggregation?
+	Composition -> 	To qualify as a composition, an object and a part must have the following relationship:
+					The part (member) is part of the object (class)
+					The part (member) can only belong to one object (class) at a time
+					The part (member) has its existence managed by the object (class)
+					The part (member) does not know about the existence of the object (class)
+
+	Inheritance ->  Inheritance in C++ takes place between classes. In an inheritance (is-a) relationship, 
+					the class being inherited from is called the parent class, base class, or superclass, and 
+					the class doing the inheriting is called the child class, derived class, or subclass.
+
+	Aggretation ->  To qualify as an aggregation, a whole object and its parts must have the following relationship:
+					The part (member) is part of the object (class)
+					The part (member) can (if desired) belong to more than one object (class) at a time
+					The part (member) does not have its existence managed by the object (class)
+					The part (member) does not know about the existence of the object (class)
+
 13. Should you always initialize variables? 
+	Its best practicee to initialize variables, otherwise you could have some unexpected 
+	behavior in rare cases, but there are variables that are non-nullables.
+	Classes are nullables.
+
 14. What concept(s) in C++ would you use to manage resources automatically?
-	a. How important are these concepts? 	
+	a. How important are these concepts?
 	b. What tools are you familiar with for tracking resource allocations? 
+	This is known as RAII -> Resource Acquisition Is Initialization
+
+    C++ doesn't have a garbage collector, wich is a proccess running in operating systems or languages like Java (as it runs over a virtual machine)
+	that releases heap memory and some other resources when it's considered that won't be needed
+
+	In C++ if you don't do this manually it can cause memory leaks which is dangerous for any c++ application
+	You can make use of storage duration of objects to get them destroyed automatically, there are some other resources 
+	in std lib like smart pointers that can handle dynamic memory allocation and eliminates the need of an explicit destructor
+	in the classes.
+
+	An extra case can be mutexes which were described previously that help to mmanage resources when they are shared and can potentially
+	cause a race condition.
+
 15. What security concerns have you come across in the past and how have you addressed them?
+	One of them was on an embedded device that needed to connect with a cloud platform.
+	The SoC of the device had a TPM so a module was implemented to manage keys and certificates, using this TPM hardware module.
+
 16. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+	The context of my answer is that my entire career I have been and Embedded Software developer
+	I would say that having a virtual environment is one of the most usefull things when working. Having your device simulated 
+	on a linux environment it's very usefull because it gets you to develop faster since you're able to test you code very quick.
+	Aswell having debuggin tools such as a debugger or network tools like wire shark or tcp dump.
+	 
 17. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.   
 18. Scenario: You are dealing with legacy code containing no test suites nor documented requirements, and are required to make a change. Describe your expected process for how you may approach the solution. 
 	a. Consider both a long term and short-term solutions. 
