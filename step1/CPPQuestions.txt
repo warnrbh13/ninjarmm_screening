@@ -223,11 +223,36 @@
 		std::string something = "avalue";
 		return something;
 	}
+
+	It is returning an rvalue, and its storage duratoin is until it returns
+	from the function. It will initialize temporarly an string object with the 
+	rvalue of "avalue", then this value will be copied to the return value object
+	and the temporary will be destroyed.
 	
 	Bonus: What would most compilers do with this code?
+
 8. Why would you use new rather than malloc when allocating an object? Likewise, what's the difference between free and delete?
+	To allocate dynamic memory using malloc you must calculate the memory required manually, new does it automatically
+	At memory allocation using new operator if it fails it throws and exception
+	You can overload new operator for your own types 
+
+	Delete frees the memory and calls the destructor of the object and free only frees the memory
+
 9. Explain the purpose of std::move, and std::forward. 
+	std::move -> it exists to avoid copying that can quite time-consuming at runtime when a larga amount of data is involved. With move you
+	can transfer ownershop of the resources from on object to another but this is not a renaming, when move is performed between two objects
+	these objects are separate objects with separate storage and potentially separate lifetimes
+
+	std::forward -> Is used to cast templated function parameter
+	
+
 10. How do you share resources safely between threads? How would you share an integer value vs user defined type? 
+	Safe resource sharing can be achieved with syncronization, in c++ we have mutexes and lock_guards. Mutexes allow to block resources to be used
+	by other threads or main code until this it's unlocked, there are other usefull alternatives like lock_guards which are safer since they
+	unlock the resouces automatically after the data gets out of scope. 
+
+	
+
 11. What are the some of the principles of object-oriented programming?
 12. Explain inheritance vs composition vs aggregation?
 13. Should you always initialize variables? 
