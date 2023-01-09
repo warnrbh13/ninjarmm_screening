@@ -311,7 +311,33 @@
 	Aswell having debuggin tools such as a debugger or network tools like wire shark or tcp dump.
 	 
 17. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.   
+	Well talking about the obvious I would say that having everything on a repository it's were every project should start.
+	Using tools like git it's very usefull since it helps you to keep tracking of everything that is new in the code base.
+	In addition I consider that one of the most important things is to use Git always under some well designed branch strategy followed
+	by it's CI/CD tools. So far I have been using only Atlassian tools in my professional career such as bitbucket, sonarqube, bamboo
+	and artifactory. I thing that this initial environment is very important for development because everything would be trackable 
+	for the future when (because they will) buggs appear.
+
 18. Scenario: You are dealing with legacy code containing no test suites nor documented requirements, and are required to make a change. Describe your expected process for how you may approach the solution. 
 	a. Consider both a long term and short-term solutions. 
+	Depending on the urgency of the changes needed I would choose between the long term and short-germ solutions
+
+	First of all I would need to collect the requirements fromo the project manager or the product owner. I would need to spent enough time on this until the new feature is clear.
+	As weel I would need to understand the requirements from the whole project just to make sure we are not affecting it's initial features.
+
+	If it's very urgent it would be necessary to complete as soon as possible. I would program some knowledge transfer sessions if it's possible
+	if not I would need to go into the code to identify the high level architecture, in both scenarios I would need to start building new documentation
+	After identifying the high level architecture of the system I would need to detect which modules will need to be updated or can be potentially affected 
+	with the new changes. After all this is done I will plan the tasks with the team and create a new branch based on a new branch strategy designed for us
+	with this we will start keeping track of all this "new era" of codding for this project.
+
+	Now it comes the long therm solution. Built the requirements of the whole project with the product manager, product owner and stakeholders. We would need to identify the code that needs to be updated or if it is still maintainable 
+	based on current project status we would probably need to plan to rebuild the project (or at least the more critical modules) from "scratch" following
+	the requirements. 
+
 19. What concerns do you had supporting legacy operating systems? (If any)
+	I haven't had this experiende but it would be probably related with library versions and it's dependencies with other libraries and the project itself
+
 20. Tell us about a project you worked on that you found to be interesting or unusual. 
+	When I needed to port a module that was typycally used in PC systems with many resources to an embedded device that was very limited
+	compared with a PC, there was many optimizations that needed to be done from performance to space in "disk".
